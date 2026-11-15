@@ -17,7 +17,7 @@ public class Banco {
     }
 
     public void agregarPokemon(Pokemon pokemon) {
-        if (pokemon != null && pokemones.size() < 3) {
+        if (pokemon != null && pokemones.size() < 2) {
             pokemones.add(pokemon);
         }
     }
@@ -31,5 +31,19 @@ public class Banco {
 
     public boolean estaVacio() {
         return pokemones.isEmpty();
+    }
+
+    public boolean agregarDesdeMano(Pokemon pokemon, int turno) {
+        if (pokemon == null || !pokemon.esBasico()){
+            return false;
+        }
+
+        if (pokemones.size() >= 2){
+            return false;
+        }
+
+        pokemon.setTurnoEnJuego(turno);
+        pokemones.add(pokemon);
+        return true;
     }
 }
