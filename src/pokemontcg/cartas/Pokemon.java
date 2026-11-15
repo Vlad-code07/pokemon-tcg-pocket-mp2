@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Pokemon extends Carta {
 
+    public static final String BASICO = "Básico";
+    public static final String FASE1 = "Fase1";
+    public static final String FASE2 = "Fase2";
+
     private String tipo;
     private int puntosSalud;
     private int puntosSaludMaximos;
@@ -13,18 +17,20 @@ public class Pokemon extends Carta {
     private String etapa; // Campo de etapa para la regla del mazo
     private List<Ataque> ataques;
     private List<String> energiasAdjuntas;
+    private List<Pokemon> cartasDebajo;
     private boolean esEx;
+    private int turnoEnJuego; // Nuevo campo para almacenar el turno en que el Pokémon fue jugado
 
     // Constructor sin debilidad
     public Pokemon(String nombre, String tipo, int puntosSalud,
                    int costoRetirada, boolean esEx) {
-        this(nombre, tipo, puntosSalud, costoRetirada, "", "Básico", esEx);
+        this(nombre, tipo, puntosSalud, costoRetirada, "", BASICO, esEx);
     }
 
     // Constructor con debilidad y etapa por defecto
     public Pokemon(String nombre, String tipo, int puntosSalud,
                    int costoRetirada, String debilidad, boolean esEx) {
-        this(nombre, tipo, puntosSalud, costoRetirada, debilidad, "Básico", esEx);
+        this(nombre, tipo, puntosSalud, costoRetirada, debilidad, BASICO, esEx);
     }
 
     // Constructor completo
@@ -36,10 +42,11 @@ public class Pokemon extends Carta {
         this.puntosSaludMaximos = puntosSalud;
         this.costoRetirada = costoRetirada;
         this.debilidad = debilidad;
-        this.etapa = (etapa != null && !etapa.isBlank()) ? etapa : "Básico";
+        this.etapa = (etapa != null && !etapa.isBlank()) ? etapa : BASICO;
         this.esEx = esEx;
         this.ataques = new ArrayList<>();
         this.energiasAdjuntas = new ArrayList<>();
+        this.cartasDebajo = new ArrayList<>();
     }
 
     public String getTipo() {
@@ -77,6 +84,10 @@ public class Pokemon extends Carta {
 
     public List<String> getEnergiasAdjuntas() {
         return new ArrayList<>(energiasAdjuntas);
+    }
+
+    public boolean esBasico(){
+        return BASICO.equals(etapa); 
     }
 
     public boolean esEx() {
@@ -128,5 +139,25 @@ public class Pokemon extends Carta {
 
     public boolean estaDebilitado() {
         return getPuntosSalud() <= 0;
+    }
+
+    public List<Pokemon> getCartasDebajo() {
+        return new ArrayList<>(cartasDebajo);
+    }
+
+    public void heredarEstado(Pokemon anterior){
+        int danio = anterior.getPuntosSaludMaximos() - anterior.getPuntosSalud();
+        this.puntosSalud = this.puntosSaludMaximos - danio;
+        this.energiasAdjuntas = new ArrayList<>(anterior.getEnergiasAdjuntas());
+        this.cartasDebajo = new ArrayList<>(anterior.getCartasDebajo());
+        this.cartasDebajo.add(anterior);
+    }
+
+    public int getTurnoEnJuego() {
+        return turnoEnJuego;
+    }
+
+    public void setTurnoEnJuego(int turnoEnJuego) {
+        this.turnoEnJuego = turnoEnJuego;
     }
 }

@@ -41,7 +41,7 @@ public class Objeto extends Entrenador {
                 while (iterador.hasNext()) {
                     Carta carta = iterador.next();
 
-                    if (carta instanceof Pokemon) {
+                    if (carta instanceof Pokemon && ((Pokemon) carta).esBasico()) {
                         iterador.remove();
                         jugador.getMano().agregarCarta(carta);
 
@@ -51,7 +51,7 @@ public class Objeto extends Entrenador {
                     }
                 }
 
-                System.out.println("No se encontraron Pokémon en el mazo.");
+                System.out.println("No se encontraron Pokémon básicos.");
                 break;
 
             case "Turbo Velocidad":
