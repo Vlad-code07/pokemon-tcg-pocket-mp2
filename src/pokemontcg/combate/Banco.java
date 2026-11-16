@@ -17,7 +17,7 @@ public class Banco {
     }
 
     public void agregarPokemon(Pokemon pokemon) {
-        if (pokemon != null && pokemones.size() < 2) {
+        if (pokemon != null && pokemones.size() < 3) {
             pokemones.add(pokemon);
         }
     }
