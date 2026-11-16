@@ -184,12 +184,8 @@ public class TableroJuego extends JFrame {
         panelControles.setOpaque(false);
 
         panelMano = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 5));
-
-        JScrollPane scrollMano = new JScrollPane(panelMano);
-        scrollMano.setBorder(new TitledBorder("Tu Mano (Haz clic en una carta para jugarla)"));
-        scrollMano.setPreferredSize(new Dimension(0, 105));
-        scrollMano.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-        scrollMano.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        panelMano.setBorder(new TitledBorder("Tu Mano (Haz clic en una carta para jugarla)"));
+        panelMano.setPreferredSize(new Dimension(0, 90));
 
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 5));
         btnAdjuntarEnergia = new JButton("Adjuntar Energía");
@@ -204,7 +200,7 @@ public class TableroJuego extends JFrame {
         panelBotones.add(btnRetirar);
         panelBotones.add(btnPasarTurno);
 
-        panelControles.add(scrollMano, BorderLayout.CENTER);
+        panelControles.add(panelMano, BorderLayout.CENTER);
         panelControles.add(panelBotones, BorderLayout.SOUTH);
 
         panel.add(panelControles, BorderLayout.SOUTH);
