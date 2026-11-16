@@ -22,7 +22,7 @@ public class ValidacionMazo {
             // Se valida correctamente si la carta es un Pokémon Básico
             if (cartaActual instanceof Pokemon) {
                 Pokemon p = (Pokemon) cartaActual;
-                if (p.getEtapa().equalsIgnoreCase("Básico") || p.getEtapa().equalsIgnoreCase("Basico")) {
+                if (p.esBasico()) {
                     contieneBasico++;
                 }
             }
@@ -74,7 +74,7 @@ public class ValidacionMazo {
             for (Carta carta : jugador.getMano().getCartas()) {
                 if (carta instanceof Pokemon) {
                     Pokemon p = (Pokemon) carta;
-                    if (!p.esEx()) {
+                    if (p.esBasico() && !p.esEx()) {
                         tieneBasicoValido = true;
                         break;
                     }
