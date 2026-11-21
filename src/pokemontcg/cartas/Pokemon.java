@@ -147,7 +147,7 @@ public class Pokemon extends Carta {
 
     public void heredarEstado(Pokemon anterior){
         int danio = anterior.getPuntosSaludMaximos() - anterior.getPuntosSalud();
-        this.puntosSalud = this.puntosSaludMaximos - danio;
+        this.puntosSalud = Math.max(0, this.puntosSaludMaximos - danio);
         this.energiasAdjuntas = new ArrayList<>(anterior.getEnergiasAdjuntas());
         this.cartasDebajo = new ArrayList<>(anterior.getCartasDebajo());
         this.cartasDebajo.add(anterior);

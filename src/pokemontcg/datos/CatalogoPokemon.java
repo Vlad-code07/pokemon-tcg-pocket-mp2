@@ -14,9 +14,9 @@ public class CatalogoPokemon {
 
         // 1. Pikachu
         Pokemon pikachu = new Pokemon(
-                "Pikachu", "Electrico", 60, 1, "Básico", false);
+                "Pikachu", "Eléctrico", 60, 1, "Básico", false);
         pikachu.agregarAtaque(
-                new Ataque("Mordisco", "Electrico", 1, 20));
+                new Ataque("Mordisco", "Eléctrico", 1, 20));
         pokemon.add(pikachu);
 
         // 2. Charmander
@@ -65,11 +65,11 @@ public class CatalogoPokemon {
 
         // 8. Zapdos ex
         Pokemon zapdos = new Pokemon(
-                "Zapdos ex", "Electrico", 130, 1, "Básico", true);
+                "Zapdos ex", "Eléctrico", 130, 1, "Básico", true);
         zapdos.agregarAtaque(
                 new Ataque("Picotazo", "Incoloro", 1, 30));
         zapdos.agregarAtaque(
-                new Ataque("Tormenta Eléctrica", "Electrico", 3, 100));
+                new Ataque("Tormenta Eléctrica", "Eléctrico", 3, 100));
         pokemon.add(zapdos);
 
         // 9. Moltres ex
