@@ -1,28 +1,21 @@
 package pokemontcg;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
-import pokemontcg.cartas.Ataque;
-import pokemontcg.cartas.Carta;
-import pokemontcg.cartas.Entrenador;
-import pokemontcg.cartas.Pokemon;
-import pokemontcg.cartas.Soporte;
-import pokemontcg.cartas.PokemonEvolucion;
-import pokemontcg.combate.Jugador;
-import pokemontcg.datos.CatalogoEntrenadores;
-import pokemontcg.datos.CatalogoEvolucion;
-import pokemontcg.datos.CatalogoPokemon;
-import pokemontcg.reglas.ReglaCombate;
-import pokemontcg.reglas.ValidacionMazo;
-import pokemontcg.reglas.ReglaEvolucion;
+import javax.swing.SwingUtilities;
+import pokemontcg.gui.VentanaInicio;
 
 
 public class App {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
+    SwingUtilities.invokeLater(() -> {
+        VentanaInicio ventana = new VentanaInicio();
+        ventana.setVisible(true);
+    });
+    }
+    }
+
+    /*Scanner scanner = new Scanner(System.in);
         ReglaCombate reglaCombate = new ReglaCombate();
 
         System.out.println("==========================================");
@@ -42,7 +35,7 @@ public class App {
         armarMazoAleatorio(ash);
         armarMazoAleatorio(gary);
 
-        if (!ValidacionMazo.validarMazo(ash.getMazo()) 
+        if (!ValidacionMazo.validarMazo(ash.getMazo())
             || !ValidacionMazo.validarMazo(gary.getMazo())) {
             System.out.println("[ERROR] Mazo inválido, no se puede iniciar el juego.");
             return;
@@ -102,12 +95,12 @@ public class App {
                     } else if (actual.getPokemonActivo() == null) {
                         System.out.println("[AVISO] No tienes un Pokémon activo.");
                     } else {
-                        String tipoEnergia = actual.getPokemonActivo().getCategoria(); 
-                        
+                        String tipoEnergia = actual.getPokemonActivo().getCategoria();
+
                         actual.getPokemonActivo().adjuntarEnergia(tipoEnergia);
                         actual.gastarEnergiaZona();
                         energiaAdjuntadaEsteTurno = true;
-                        
+
                         System.out.println("[ENERGIA] ¡Energía " + tipoEnergia + " adjuntada a " + actual.getPokemonActivo().getNombre() + "!");
                     }
                     break;
@@ -154,7 +147,7 @@ public class App {
                         break;
 
                     case "3":
-                        
+
                         List<Integer> indicesPokemon = new ArrayList<>();
                         System.out.println("\n--- POKEMON BÁSICOS EN MANO ---");
                         for (int i = 0; i < actual.getMano().getCartas().size(); i++) {
@@ -224,7 +217,7 @@ public class App {
                                 Pokemon nuevoActivo = actual.getBanco().getPokemones().remove(idxB);
                                 actual.getBanco().agregarPokemon(activoActual);
                                 actual.setPokemonActivo(nuevoActivo);
-                                System.out.println("[RETIRO] ¡" + activoActual.getNombre() + " pagó su costo de retirada (" + costoRet + 
+                                System.out.println("[RETIRO] ¡" + activoActual.getNombre() + " pagó su costo de retirada (" + costoRet +
                                                    " energía(s)) y pasó al banco! Nuevo activo: " + nuevoActivo.getNombre());
                             } else {
                                 System.out.println("[ERROR] Selección inválida.");
@@ -278,7 +271,7 @@ public class App {
                                 PokemonEvolucion e = (PokemonEvolucion) c;
                                 indicesEvolucion.add(i);
                                 System.out.println(indicesEvolucion.size() + ". " + c.getNombre()
-                                    + " [" + e.getEtapa() + "] evoluciona de " 
+                                    + " [" + e.getEtapa() + "] evoluciona de "
                                     + e.getNombrePreEvolucion());
                             }
                         }
@@ -296,7 +289,7 @@ public class App {
                             break;
                         }
 
-                        PokemonEvolucion cartaEvolucion = (PokemonEvolucion) 
+                        PokemonEvolucion cartaEvolucion = (PokemonEvolucion)
                                                             actual.getMano().getCartas().get(indicesEvolucion.get(idxEvo - 1));
 
                         // Listar los posibles Pokémon a evolucionar (activo y banco)
@@ -335,8 +328,8 @@ public class App {
                             System.out.println("[ERROR] " + error);
 
                         } else {
-                            System.out.println("[EVOLUCIÓN] ¡" + pokemonObjetivo.getNombre() + " ha evolucionado a " 
-                                                + cartaEvolucion.getNombre() + "! PS " + cartaEvolucion.getPuntosSalud() 
+                            System.out.println("[EVOLUCIÓN] ¡" + pokemonObjetivo.getNombre() + " ha evolucionado a "
+                                                + cartaEvolucion.getNombre() + "! PS " + cartaEvolucion.getPuntosSalud()
                                                 + "/" + cartaEvolucion.getPuntosSaludMaximos());
                         }
                         break;
@@ -361,7 +354,6 @@ public class App {
 
         System.out.println("\n=== PARTIDA FINALIZADA ===");
     }
-
     private static void armarMazoAleatorio(Jugador jugador) {
 
         // 1. Montón con 2 copias de cada carta de Pokémon, Entrenador y Evolución
@@ -484,3 +476,4 @@ public class App {
         return cantidad + " (" + p.getTipo() + ")";
     }
 }
+*/

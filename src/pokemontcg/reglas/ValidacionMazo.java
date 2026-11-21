@@ -74,7 +74,7 @@ public class ValidacionMazo {
             for (Carta carta : jugador.getMano().getCartas()) {
                 if (carta instanceof Pokemon) {
                     Pokemon p = (Pokemon) carta;
-                    if (p.esBasico() && !p.esEx()) {
+                    if (p.esBasico()) {
                         tieneBasicoValido = true;
                         break;
                     }

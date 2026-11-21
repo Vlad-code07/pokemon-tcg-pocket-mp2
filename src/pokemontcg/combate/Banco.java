@@ -38,9 +38,9 @@ public class Banco {
             return false;
         }
 
-        if (pokemones.size() >= 2){
-            return false;
-        }
+        if (pokemones.size() >= 3){
+        return false;
+}
 
         pokemon.setTurnoEnJuego(turno);
         pokemones.add(pokemon);
